@@ -128,9 +128,9 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="cate.html">
+                       <a _href="${pageContext.request.contextPath}/PlantServlet?op=show">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>多级分类</cite>
+                            <cite>模块列表</cite>
                         </a>
                     </li >
                 </ul>
@@ -143,21 +143,21 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="admin-list.html">
+                        <a _href="server/member-list.jsp">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>管理员列表</cite>
+                            <cite>用户管理</cite>
                         </a>
                     </li >
                     <li>
-                        <a _href="admin-role.html">
+                        <a _href="server/plant-list.jsp">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>角色管理</cite>
+                            <cite>板块管理</cite>
                         </a>
                     </li >
                     <li>
-                        <a _href="admin-cate.html">
+                        <a _href="server/order-list.jsp">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>权限分类</cite>
+                            <cite>帖子管理</cite>
                         </a>
                     </li >
                     <li>
@@ -216,16 +216,5 @@
     <div class="footer">
         <div class="copyright">Copyright ©2017 x-admin v2.3 All Rights Reserved</div>  
     </div>
-    <!-- 底部结束 -->
-    <script>
-    //百度统计可去掉
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
-      var s = document.getElementsByTagName("script")[0]; 
-      s.parentNode.insertBefore(hm, s);
-    })();
-    </script>
 </body>
 </html>

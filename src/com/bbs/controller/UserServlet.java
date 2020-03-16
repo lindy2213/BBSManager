@@ -181,7 +181,7 @@ public class UserServlet extends HttpServlet {
 								break; 
 						 } 
 					}else { 
-					  userPhoto=item.getName();
+					  userPhoto=userId+item.getName();
 					  //实现文件的上传 
 					  File saveFile=new File(filePath,userPhoto);
 					  item.write(saveFile);

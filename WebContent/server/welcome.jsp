@@ -8,13 +8,13 @@
         <meta name="renderer" content="webkit">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
-        <link rel="stylesheet" href="./css/font.css">
-        <link rel="stylesheet" href="./css/xadmin.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/font.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath }/static/css/xadmin.css">
     </head>
     <body>
     <div class="x-body">
         <blockquote class="layui-elem-quote">欢迎管理员：
-            <span class="x-red">test</span>！当前时间:2018-04-25 20:50:53  <a onclick="parent.x_admin_add_to_tab('在tab打开','https://www.163.com',true)" style="color: red" href="javascript:;">在tab打开</a>
+            <span class="x-red">${userId}</span>！当前时间:2018-04-25 20:50:53  <a onclick="parent.x_admin_add_to_tab('在tab打开','https://www.163.com',true)" style="color: red" href="javascript:;">在tab打开</a>
         </blockquote>
         <fieldset class="layui-elem-field">
             <legend>数据统计</legend>
