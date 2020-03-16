@@ -44,7 +44,7 @@
       </div>
       <xblock>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-        <button class="layui-btn" onclick="x_admin_show('添加用户','./server/member-add.jsp',800,600)"><i class="layui-icon"></i>添加</button>
+        <button class="layui-btn" onclick="x_admin_show('添加用户','${pageContext.request.contextPath}/server/member-add.jsp',800,600)"><i class="layui-icon"></i>添加</button>
         <span class="x-right" style="line-height:40px">共有数据：88 条</span>
       </xblock>
       <table class="layui-table x-admin">
@@ -64,7 +64,7 @@
             <th>操作</th></tr>
         </thead>
         <tbody>
-        	<c:forEach items="${lists }" var="user">
+        	<c:forEach items="${lists}" var="user">
         		<tr>
 		            <td>
 		              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='${user.userId }'><i class="layui-icon">&#xe605;</i></div>
@@ -85,7 +85,7 @@
 		              <a title="编辑"  onclick="x_admin_show('编辑','${pageContext.request.contextPath}/UserServlet?op=findEdit&userId=${user.userId}',600,400)" href="javascript:;">
 		                <i class="layui-icon">&#xe642;</i>
 		              </a>
-		              <a onclick="x_admin_show('修改密码','member-password.html',600,400)" title="修改密码" href="javascript:;">
+		              <a onclick="x_admin_show('修改密码','server/member-password.html',600,400)" title="修改密码" href="javascript:;">
 		                <i class="layui-icon">&#xe631;</i>
 		              </a>
 		              <a title="删除" onclick="member_del(this,'${user.userId}')" href="javascript:;">
@@ -199,7 +199,9 @@
 		tbody.each(function(){
 			$(this).text();
 		});
+		// 获得选中的行数据
         var data = tableCheck.getData();
+		// JSON.stringify(data) 将数据转换成一个json字符串
   		/* alert(JSON.stringify(data)); */
         layer.confirm('确认要删除吗？'+data,function(index){
         	$.ajax({

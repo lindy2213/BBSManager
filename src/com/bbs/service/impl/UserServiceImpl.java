@@ -43,6 +43,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public boolean delAll(String userIds) {
 		// 将字符串中的所有引号去掉，并截取[]中的数据
+		// test001,test002
 		userIds = userIds.substring(1, userIds.lastIndexOf("]")).replaceAll("\"", "");
 		// 将字符窜进行拆分为数组
 		String[] uids = userIds.split(",");

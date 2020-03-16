@@ -173,10 +173,14 @@
   			            		if(text.trim()=="true"){
   			            		//发异步，把数据提交给php
   			  			            layer.alert("增加成功", {icon: 6},function () {
+  			  			            	//alert("确认添加");
   			  			                //关闭当前frame
   			  			                x_admin_close();
+  			  			                //window.location.href="${pageContext.request.contextPath }/UserServlet?op=index";
   			  			                // 可以对父窗口进行刷新 
   			  			                x_admin_father_reload();
+  			  			                // 让父创建重新加载
+  			  			            	window.parent.opener.location.reload();
   			  			            });
   			            		}else{
   			            			layer.alert("增加失败", {icon: 3},function () {
