@@ -8,4 +8,6 @@ public interface PlantService {
 	boolean savePlant(Plant plant);
 
 	List<Plant> getPlateList();
+
+	boolean delAll(String ids);
 }

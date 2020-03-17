@@ -46,12 +46,28 @@ public class PlantServlet extends HttpServlet {
 		}else if("delById".equals(op)) {
 			
 		}else if("delAll".equals(op)) {
-			
+			delAll(request,response);
 		}else if("update".equals(op)) {
 			
 		}else if("findById".equals(op)) {
 			
 		}
+	}
+
+	private void delAll(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		// 获得客户端传递的数据
+		String ids = request.getParameter("ids");
+		System.out.println(ids);
+		// 调用业务层中删除多个id值的方法
+		boolean isOk = ps.delAll(ids);
+		// 向客户端响应一个json对象
+		PrintWriter pw = response.getWriter();
+		if(isOk) {
+			pw.write("{\"result\":\"true\"}");
+		}else {
+			pw.write("{\"result\":\"false\"}");
+		}
+		pw.flush();
 	}
 
 	private void findAll(HttpServletRequest request, HttpServletResponse response) throws IOException {

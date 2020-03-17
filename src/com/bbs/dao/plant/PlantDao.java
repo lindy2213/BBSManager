@@ -13,4 +13,6 @@ public interface PlantDao {
 	int savaPlant(Plant plant);
 
 	List<Plant> getPlateList();
+
+	int delAll(String[] pids);
 }

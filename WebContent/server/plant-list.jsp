@@ -50,7 +50,7 @@
         <thead>
           <tr>
             <th>
-              <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
+              <div class="layui-unselect header layui-form-checkbox" lay-skin="primary" ><i class="layui-icon">&#xe605;</i></div>
             </th>
             <th>模块id</th>
             <th>模块标题</th>
@@ -63,7 +63,8 @@
           <c:forEach items="${list }" var="plate">
           	<tr>
 	            <td>
-	              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
+	              <%-- data-id 为layerui的表格绑定数据 --%>
+	              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='${plate.plantId }'><i class="layui-icon">&#xe605;</i></div>
 	            </td>
 	            <td>${plate.plantId }</td>
 	            <td>${plate.plantTitle }</td>
@@ -169,8 +170,23 @@
   
         layer.confirm('确认要删除吗？'+data,function(index){
             //捉到所有被选中的，发异步进行删除
-            layer.msg('删除成功', {icon: 1});
-            $(".layui-form-checked").not('.header').parents('tr').remove();
+            // 使用ajax来实现数据的删除
+            $.ajax({
+            	url:"${pageContext.request.contextPath}/PlantServlet?op=delAll",
+            	type:"post",
+            	data:{"ids":JSON.stringify(data)},
+            	dataType:"json",
+            	success:function(res){
+            		if(res.result=="true"){
+            			layer.msg('删除成功', {icon: 1});
+                        $(".layui-form-checked").not('.header').parents('tr').remove();
+            		}else{
+            			layer.msg('删除失败', {icon: 2});
+                        //$(".layui-form-checked").not('.header').parents('tr').remove();
+            		}
+            	}
+            }
+            );
         });
       }
     </script>

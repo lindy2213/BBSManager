@@ -36,5 +36,22 @@ public class PlantDaoImpl implements PlantDao {
 		}
 		return list;
 	}
+
+	@Override
+	public int delAll(String[] pids) {
+		// 创建SQL语句
+		StringBuffer sql = new StringBuffer("delete from bbs_plate where plateId in(");
+		// 根据传递的数组，进行占位符的拼接
+		for (int i = 0; i < pids.length; i++) {
+			sql.append("?");
+			// 判断是否到了数组的末尾，没有到末尾就拼接,
+			if(i != pids.length - 1) {
+				sql.append(",");
+			}
+		}
+		// 为字符串拼接最后一个小括号
+		sql.append(")");
+		return DataUtils.executeUpdate(sql.toString(), pids);
+	}
 	
 }

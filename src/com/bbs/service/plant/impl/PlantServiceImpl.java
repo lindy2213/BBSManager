@@ -24,4 +24,21 @@ public class PlantServiceImpl implements PlantService {
 		// TODO Auto-generated method stub
 		return pd.getPlateList();
 	}
+	@Override
+	public boolean delAll(String ids) {
+		// 因为ids是我们组合成一个字符串，现在需要对这个字符串进行处理
+		// 第一个去除所有的引号
+		ids = ids.replaceAll("\"","");
+		// 取中括号中的数据
+		ids = ids.substring(1, ids.lastIndexOf("]"));
+		// 按照,进行拆分成一个字符串数组
+		String[] pids = ids.split(",");
+		// 调用数据访问层中根据多个id删除数据的方法
+		int result = pd.delAll(pids);
+		if(result > 0) {
+			return true;
+		}else {
+			return false;
+		}
+	}
 }
