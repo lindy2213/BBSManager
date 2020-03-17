@@ -12,9 +12,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
+import com.bbs.entity.Plant;
 import com.bbs.entity.User;
 import com.bbs.service.UserService;
 import com.bbs.service.impl.UserServiceImpl;
+import com.bbs.service.plant.PlantService;
+import com.bbs.service.plant.impl.PlantServiceImpl;
 @WebServlet("/Login")
 public class Login extends HttpServlet {
 	// 创建业务层接口对象
@@ -35,6 +38,11 @@ public class Login extends HttpServlet {
 		boolean isOk=us.Verification(userId, userPsw);
 		//判断结果，根据结果进行页面跳转
 		if(isOk) {
+			// 获得所有的模块信息
+			PlantService ps = new PlantServiceImpl();
+			List<Plant> plist = ps.getPlateList();
+			req.getSession().setAttribute("plist", plist);
+			
 			req.getSession().setAttribute("userId", userId);
 			req.getRequestDispatcher("UserServlet?op=index").forward(req, resp);
 		}else {

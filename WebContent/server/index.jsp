@@ -113,7 +113,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="server/order-list.jsp">
+                        <a _href="${pageContext.request.contextPath}/InvitationServlet?op=show">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>帖子列表</cite>
                         </a>

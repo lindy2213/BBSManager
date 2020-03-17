@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
 <!DOCTYPE html>
 <html class="x-admin-sm">
   <head>
@@ -64,52 +65,54 @@
       </div>
       <xblock>
         <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button>
-        <button class="layui-btn" onclick="x_admin_show('添加用户','./order-add.html')"><i class="layui-icon"></i>添加</button>
-        <span class="x-right" style="line-height:40px">共有数据：88 条</span>
+        <button class="layui-btn" onclick="x_admin_show('添加用户','${pageContext.request.contextPath}/server/order-add.jsp')"><i class="layui-icon"></i>添加</button>
+        <span class="x-right" style="line-height:40px">共有数据：88条</span>
       </xblock>
-      <table class="layui-table">
+      <table class="layui-table x-admin">
         <thead>
           <tr>
             <th>
               <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
             </th>
-            <th>订单编号</th>
-            <th>收货人</th>
-            <th>总金额</th>
-            <th>应付金额</th>
-            <th>订单状态</th>
-            <th>支付状态</th>
+            <th>帖子编号</th>
+            <th>帖子消息</th>
+            <th>发帖人ID</th>
+            <th>板块标题</th>
+            <th>主题名称</th>
+            <th>发帖时间</th>
             <th>发货状态</th>
             <th>支付方式</th>
             <th>配送方式</th>
             <th>下单时间</th>
-            <th >操作</th>
+            <th>操作</th>
             </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>
-              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
-            </td>
-            <td>2017009171822298053</td>
-            <td>老王:18925139194</td>
-            <td>7829.10</td>
-            <td>7854.10</td>
-            <td>待确认</td>
-            <td>未支付</td>
-            <td>未发货</td>
-            <td>其他方式</td>
-            <td>申通物流</td>
-            <td>2017-08-17 18:22</td>
-            <td class="td-manage">
-              <a title="查看"  onclick="x_admin_show('编辑','order-view.html')" href="javascript:;">
-                <i class="layui-icon">&#xe63c;</i>
-              </a>
-              <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
-                <i class="layui-icon">&#xe640;</i>
-              </a>
-            </td>
-          </tr>
+          <c:forEach items="${invList }" var="invi">
+          	<tr>
+	            <td>
+	              <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='${invi.invitationId }'><i class="layui-icon">&#xe605;</i></div>
+	            </td>
+	            <td>${invi.invitationId }</td>
+	            <td>${invi.invitationMessage }</td>
+	            <td>${invi.userId }</td>
+	            <td>${invi.plateTitle }</td>
+	            <td>${invi.category }</td>
+	            <td>${invi.invitationCreate }</td>
+	            <td>未发货</td>
+	            <td>其他方式</td>
+	            <td>申通物流</td>
+	            <td>2017-08-17 18:22</td>
+	            <td class="td-manage">
+	              <a title="查看"  onclick="x_admin_show('编辑','order-view.html')" href="javascript:;">
+	                <i class="layui-icon">&#xe63c;</i>
+	              </a>
+	              <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">
+	                <i class="layui-icon">&#xe640;</i>
+	              </a>
+	            </td>
+	          </tr>
+          </c:forEach>
         </tbody>
       </table>
       <div class="page">
