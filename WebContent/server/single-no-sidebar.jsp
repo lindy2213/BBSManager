@@ -1,6 +1,7 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>    
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -78,7 +79,9 @@
 		                          <div class="author">
 		                            <span class="">${userId}</span>
 		                          </div>
-		                          <div class="date"><span>${ans.ansDate }</span></div>
+		                          <div class="date"><span>
+		                          	<fmt:formatDate value="${ans.ansDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+		                          </span></div>
 		                        </div>
 		                      </div>
 		                      <div class="comment-text mt-2">

@@ -19,7 +19,7 @@ public class InivtationAnsDaoImpl implements InivtationAnsDao {
 			Object[] params = {inviId};
 			rs = DataUtils.queryAll(sql, params);
 			while (rs.next()) {
-				InvitationAns ans = new InvitationAns(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),rs.getDate(5));
+				InvitationAns ans = new InvitationAns(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),rs.getTimestamp(5));
 				list.add(ans);
 			}
 		} catch (SQLException e) {
