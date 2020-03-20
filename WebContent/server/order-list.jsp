@@ -80,7 +80,7 @@
             <th>板块标题</th>
             <th>主题名称</th>
             <th>发帖时间</th>
-            <th>发货状态</th>
+            <th>修改时间</th>
             <th>支付方式</th>
             <th>配送方式</th>
             <th>下单时间</th>
@@ -99,12 +99,15 @@
 	            <td>${invi.plateTitle }</td>
 	            <td>${invi.category }</td>
 	            <td>${invi.invitationCreate }</td>
-	            <td>未发货</td>
+	            <td>${invi.invitationModify }</td>
 	            <td>其他方式</td>
 	            <td>申通物流</td>
 	            <td>2017-08-17 18:22</td>
 	            <td class="td-manage">
-	              <a title="查看"  onclick="x_admin_show('编辑','order-view.html')" href="javascript:;">
+	              <a title="查看帖子的详情"  onclick="x_admin_show('查看帖子的详情','${pageContext.request.contextPath}/InvitationServlet?op=details&inviId=${invi.invitationId }')" href="javascript:;">
+	                <i class="layui-icon">&#xe63c;</i>
+	              </a>
+	              <a title="修改"  onclick="x_admin_show('修改帖子','${pageContext.request.contextPath}/InvitationServlet?op=findById&inviId=${invi.invitationId }')" href="javascript:;">
 	                <i class="layui-icon">&#xe63c;</i>
 	              </a>
 	              <a title="删除" onclick="member_del(this,'要删除的id')" href="javascript:;">

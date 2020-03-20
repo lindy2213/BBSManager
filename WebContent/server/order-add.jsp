@@ -31,9 +31,6 @@
                   <input type="hidden" name="userId" required="" lay-verify="userId"
                   autocomplete="off" class="layui-input" value="${userId}">
               </div>
-              <div class="layui-form-mid layui-word-aux">
-                  <span class="x-red">*</span>帖子信息介绍
-              </div>
           </div>
         	<div class="layui-form-item">
               <label for="invitationMessage" class="layui-form-label">

@@ -31,12 +31,36 @@ public class InvitationDaoImpl implements InvitaTionDao {
 				list.add(invi);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			DataUtils.closeAll(null, null, rs);
 		}
 		return list;
+	}
+
+	@Override
+	public Invitation findInvi(String inviId) {
+		Invitation invi = null;
+		try {
+			String sql = "select invitationId,invitationMessage,userId,plateId,categoryId from bbs_invitation where invitationId=?";
+			Object[] params = {inviId};
+			rs = DataUtils.queryAll(sql, params);
+			if(rs.next()) {
+				invi = new Invitation(rs.getString(1), rs.getString(2), rs.getString(3),rs.getInt(4), rs.getInt(5));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			DataUtils.closeAll(null, null, rs);
+		}
+		return invi;
+	}
+
+	@Override
+	public int updateInvi(Invitation invi) {
+		String sql = "update bbs_invitation set invitationMessage=?,userId=?,plateId=?,categoryId=?,invitationModify=default where invitationId=?";
+		Object[] params = {invi.getInvitationMessage(),invi.getUserId(),invi.getPlateId(),invi.getCategoryId(),invi.getInvitationId()};
+		return DataUtils.executeUpdate(sql, params);
 	}
 
 }

@@ -8,4 +8,8 @@ public interface InvitaTionDao {
 	int saveInvitation(Invitation invita);
 
 	List<Invitation> getInviList();
+
+	Invitation findInvi(String inviId);
+
+	int updateInvi(Invitation invi);
 }
