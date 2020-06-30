@@ -30,7 +30,7 @@ public class Login extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
-		System.out.println("测试pull的操作，实现组员之间的项目管理");
+		/* System.out.println("测试pull的操作，实现组员之间的项目管理"); */
 		//鑾峰緱椤甸潰鍙傛暟
 		String userId=req.getParameter("userId");
 		String userPsw=req.getParameter("userpsw");
