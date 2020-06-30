@@ -20,7 +20,7 @@ import com.bbs.service.plant.PlantService;
 import com.bbs.service.plant.impl.PlantServiceImpl;
 @WebServlet("/Login")
 public class Login extends HttpServlet {
-	// 创建业务层接口对象
+	// 鍒涘缓涓氬姟灞傛帴鍙ｅ璞�
 	private UserService us=new UserServiceImpl();
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -30,15 +30,16 @@ public class Login extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
-		//获得页面参数
+		System.out.println("测试pull的操作，实现组员之间的项目管理");
+		//鑾峰緱椤甸潰鍙傛暟
 		String userId=req.getParameter("userId");
 		String userPsw=req.getParameter("userpsw");
 		userPsw = DigestUtils.md5Hex(userPsw);
-		//调用业务层验证登录的方法֤
+		//璋冪敤涓氬姟灞傞獙璇佺櫥褰曠殑鏂规硶证
 		boolean isOk=us.Verification(userId, userPsw);
-		//判断结果，根据结果进行页面跳转
+		//鍒ゆ柇缁撴灉锛屾牴鎹粨鏋滆繘琛岄〉闈㈣烦杞�
 		if(isOk) {
-			// 获得所有的模块信息
+			// 鑾峰緱鎵�鏈夌殑妯″潡淇℃伅
 			PlantService ps = new PlantServiceImpl();
 			List<Plant> plist = ps.getPlateList();
 			req.getSession().setAttribute("plist", plist);
